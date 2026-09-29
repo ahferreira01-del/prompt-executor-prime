@@ -1,5 +1,13 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1790694895230,
+      "tag": "0000_knowledge_risk_core",
+      "breakpoints": true
+    }
+  ]
 }
