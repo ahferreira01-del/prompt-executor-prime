@@ -11,13 +11,13 @@ Construir o sistema completo da especificação, começando pelo MVP operacional
 - Limites estritos: KCI > 80%, CDI > 80%, especialista crítico > 70%.
 
 ## Entrega
-1. Criar acesso seguro e isolamento por empresa, com perfis de usuário, trilha de auditoria e proteção dos dados.
-2. Modelar empresas, colaboradores, processos, tecnologias, clientes, capacidades, atividades, diagnósticos, indicadores, chamados e recomendações.
-3. Construir a navegação do produto e as telas de empresas, diagnóstico guiado, colaboradores, processos, clientes, tecnologias, chamados e painel executivo.
-4. Implementar o motor determinístico de KCI, Bus Factor, risco documental, CDI, Revenue At Risk e KRR, com configurações versionadas.
-5. Atualizar automaticamente indicadores e painel após concluir um diagnóstico.
-6. Implementar classificação de chamados e recomendações com IA, preservando os cálculos determinísticos e validando respostas estruturadas.
-7. Cobrir validações, limites matemáticos, isolamento entre empresas, permissões, falhas de IA e os fluxos principais com testes.
+1. Criar a fundação: acesso seguro, perfis, empresa/tenant, políticas de isolamento, trilha de auditoria e estrutura de páginas.
+2. Modelar o domínio principal: empresas, colaboradores, processos, tecnologias, clientes, capacidades e atividades; exclusão de colaborador será sempre lógica.
+3. Construir o diagnóstico guiado com perguntas obrigatórias, documentação, criticidade, revisão e conclusão.
+4. Implementar o motor determinístico de KCI, Bus Factor, risco documental, CDI, Revenue At Risk e KRR; cada cálculo persistirá a versão exata da configuração utilizada.
+5. Construir o painel executivo com agregações, listas críticas e atualização automática após concluir um diagnóstico.
+6. Implementar chamados, histórico de atividades, classificação e identificação de especialista crítico; depois, mitigação por IA baseada somente nos indicadores calculados.
+7. Endurecer o produto com RBAC, isolamento multiempresa, auditoria, falhas de IA e testes matemáticos de fronteira, regressão e fluxo ponta a ponta.
 8. Validar visualmente em telas grandes e pequenas, e percorrer o fluxo real de cadastro até o painel.
 
 ## Direção visual
