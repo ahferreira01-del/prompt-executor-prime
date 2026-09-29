@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+# Architecture Decisions
+
+- Use TanStack Start route files for all application screens because this project uses its fixed file-based router.
