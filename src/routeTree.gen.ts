@@ -15,9 +15,11 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedClientsRouteImport } from './routes/_authenticated.clients'
 import { Route as AuthenticatedCompaniesRouteImport } from './routes/_authenticated.companies'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated.dashboard'
+import { Route as AuthenticatedDiagnosticRouteImport } from './routes/_authenticated.diagnostic'
 import { Route as AuthenticatedEmployeesRouteImport } from './routes/_authenticated.employees'
 import { Route as AuthenticatedProcessesRouteImport } from './routes/_authenticated.processes'
 import { Route as AuthenticatedTechnologiesRouteImport } from './routes/_authenticated.technologies'
+import { Route as AuthenticatedTicketsRouteImport } from './routes/_authenticated.tickets'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -48,6 +50,11 @@ const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedDiagnosticRoute = AuthenticatedDiagnosticRouteImport.update({
+  id: '/diagnostic',
+  path: '/diagnostic',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedEmployeesRoute = AuthenticatedEmployeesRouteImport.update({
   id: '/employees',
   path: '/employees',
@@ -64,6 +71,11 @@ const AuthenticatedTechnologiesRoute =
     path: '/technologies',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedTicketsRoute = AuthenticatedTicketsRouteImport.update({
+  id: '/tickets',
+  path: '/tickets',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -71,9 +83,11 @@ export interface FileRoutesByFullPath {
   '/clients': typeof AuthenticatedClientsRoute
   '/companies': typeof AuthenticatedCompaniesRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/diagnostic': typeof AuthenticatedDiagnosticRoute
   '/employees': typeof AuthenticatedEmployeesRoute
   '/processes': typeof AuthenticatedProcessesRoute
   '/technologies': typeof AuthenticatedTechnologiesRoute
+  '/tickets': typeof AuthenticatedTicketsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -81,9 +95,11 @@ export interface FileRoutesByTo {
   '/clients': typeof AuthenticatedClientsRoute
   '/companies': typeof AuthenticatedCompaniesRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/diagnostic': typeof AuthenticatedDiagnosticRoute
   '/employees': typeof AuthenticatedEmployeesRoute
   '/processes': typeof AuthenticatedProcessesRoute
   '/technologies': typeof AuthenticatedTechnologiesRoute
+  '/tickets': typeof AuthenticatedTicketsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -93,9 +109,11 @@ export interface FileRoutesById {
   '/_authenticated/clients': typeof AuthenticatedClientsRoute
   '/_authenticated/companies': typeof AuthenticatedCompaniesRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/diagnostic': typeof AuthenticatedDiagnosticRoute
   '/_authenticated/employees': typeof AuthenticatedEmployeesRoute
   '/_authenticated/processes': typeof AuthenticatedProcessesRoute
   '/_authenticated/technologies': typeof AuthenticatedTechnologiesRoute
+  '/_authenticated/tickets': typeof AuthenticatedTicketsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -105,9 +123,11 @@ export interface FileRouteTypes {
     | '/clients'
     | '/companies'
     | '/dashboard'
+    | '/diagnostic'
     | '/employees'
     | '/processes'
     | '/technologies'
+    | '/tickets'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -115,9 +135,11 @@ export interface FileRouteTypes {
     | '/clients'
     | '/companies'
     | '/dashboard'
+    | '/diagnostic'
     | '/employees'
     | '/processes'
     | '/technologies'
+    | '/tickets'
   id:
     | '__root__'
     | '/'
@@ -126,9 +148,11 @@ export interface FileRouteTypes {
     | '/_authenticated/clients'
     | '/_authenticated/companies'
     | '/_authenticated/dashboard'
+    | '/_authenticated/diagnostic'
     | '/_authenticated/employees'
     | '/_authenticated/processes'
     | '/_authenticated/technologies'
+    | '/_authenticated/tickets'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -181,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/diagnostic': {
+      id: '/_authenticated/diagnostic'
+      path: '/diagnostic'
+      fullPath: '/diagnostic'
+      preLoaderRoute: typeof AuthenticatedDiagnosticRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/employees': {
       id: '/_authenticated/employees'
       path: '/employees'
@@ -202,6 +233,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedTechnologiesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/tickets': {
+      id: '/_authenticated/tickets'
+      path: '/tickets'
+      fullPath: '/tickets'
+      preLoaderRoute: typeof AuthenticatedTicketsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
@@ -209,18 +247,22 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedClientsRoute: typeof AuthenticatedClientsRoute
   AuthenticatedCompaniesRoute: typeof AuthenticatedCompaniesRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedDiagnosticRoute: typeof AuthenticatedDiagnosticRoute
   AuthenticatedEmployeesRoute: typeof AuthenticatedEmployeesRoute
   AuthenticatedProcessesRoute: typeof AuthenticatedProcessesRoute
   AuthenticatedTechnologiesRoute: typeof AuthenticatedTechnologiesRoute
+  AuthenticatedTicketsRoute: typeof AuthenticatedTicketsRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedClientsRoute: AuthenticatedClientsRoute,
   AuthenticatedCompaniesRoute: AuthenticatedCompaniesRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedDiagnosticRoute: AuthenticatedDiagnosticRoute,
   AuthenticatedEmployeesRoute: AuthenticatedEmployeesRoute,
   AuthenticatedProcessesRoute: AuthenticatedProcessesRoute,
   AuthenticatedTechnologiesRoute: AuthenticatedTechnologiesRoute,
+  AuthenticatedTicketsRoute: AuthenticatedTicketsRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
