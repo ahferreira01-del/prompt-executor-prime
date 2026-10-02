@@ -1,0 +1,12 @@
+REVOKE ALL ON FUNCTION public.add_company_owner_membership() FROM PUBLIC, anon, authenticated;
+REVOKE ALL ON FUNCTION public.audit_tenant_change() FROM PUBLIC, anon, authenticated;
+REVOKE ALL ON FUNCTION public.prevent_used_risk_configuration_changes() FROM PUBLIC, anon, authenticated;
+REVOKE ALL ON FUNCTION public.validate_tenant_relations() FROM PUBLIC, anon, authenticated;
+REVOKE ALL ON FUNCTION public.is_company_member(uuid, uuid) FROM PUBLIC, anon;
+REVOKE ALL ON FUNCTION public.has_company_role(uuid, public.app_role[], uuid) FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION public.is_company_member(uuid, uuid) TO authenticated, service_role;
+GRANT EXECUTE ON FUNCTION public.has_company_role(uuid, public.app_role[], uuid) TO authenticated, service_role;
+GRANT EXECUTE ON FUNCTION public.add_company_owner_membership() TO service_role;
+GRANT EXECUTE ON FUNCTION public.audit_tenant_change() TO service_role;
+GRANT EXECUTE ON FUNCTION public.prevent_used_risk_configuration_changes() TO service_role;
+GRANT EXECUTE ON FUNCTION public.validate_tenant_relations() TO service_role;
