@@ -20,6 +20,8 @@ import { Route as AuthenticatedEmployeesRouteImport } from './routes/_authentica
 import { Route as AuthenticatedProcessesRouteImport } from './routes/_authenticated.processes'
 import { Route as AuthenticatedTechnologiesRouteImport } from './routes/_authenticated.technologies'
 import { Route as AuthenticatedTicketsRouteImport } from './routes/_authenticated.tickets'
+import { Route as ApiPublicCronMovideskSyncRouteImport } from './routes/api/public/cron/movidesk-sync'
+import { Route as ApiPublicWebhooksMovideskRouteImport } from './routes/api/public/webhooks/movidesk'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -76,6 +78,18 @@ const AuthenticatedTicketsRoute = AuthenticatedTicketsRouteImport.update({
   path: '/tickets',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const ApiPublicCronMovideskSyncRoute =
+  ApiPublicCronMovideskSyncRouteImport.update({
+    id: '/api/public/cron/movidesk-sync',
+    path: '/api/public/cron/movidesk-sync',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicWebhooksMovideskRoute =
+  ApiPublicWebhooksMovideskRouteImport.update({
+    id: '/api/public/webhooks/movidesk',
+    path: '/api/public/webhooks/movidesk',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -88,6 +102,8 @@ export interface FileRoutesByFullPath {
   '/processes': typeof AuthenticatedProcessesRoute
   '/technologies': typeof AuthenticatedTechnologiesRoute
   '/tickets': typeof AuthenticatedTicketsRoute
+  '/api/public/cron/movidesk-sync': typeof ApiPublicCronMovideskSyncRoute
+  '/api/public/webhooks/movidesk': typeof ApiPublicWebhooksMovideskRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -100,6 +116,8 @@ export interface FileRoutesByTo {
   '/processes': typeof AuthenticatedProcessesRoute
   '/technologies': typeof AuthenticatedTechnologiesRoute
   '/tickets': typeof AuthenticatedTicketsRoute
+  '/api/public/cron/movidesk-sync': typeof ApiPublicCronMovideskSyncRoute
+  '/api/public/webhooks/movidesk': typeof ApiPublicWebhooksMovideskRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -114,6 +132,8 @@ export interface FileRoutesById {
   '/_authenticated/processes': typeof AuthenticatedProcessesRoute
   '/_authenticated/technologies': typeof AuthenticatedTechnologiesRoute
   '/_authenticated/tickets': typeof AuthenticatedTicketsRoute
+  '/api/public/cron/movidesk-sync': typeof ApiPublicCronMovideskSyncRoute
+  '/api/public/webhooks/movidesk': typeof ApiPublicWebhooksMovideskRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -128,6 +148,8 @@ export interface FileRouteTypes {
     | '/processes'
     | '/technologies'
     | '/tickets'
+    | '/api/public/cron/movidesk-sync'
+    | '/api/public/webhooks/movidesk'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -140,6 +162,8 @@ export interface FileRouteTypes {
     | '/processes'
     | '/technologies'
     | '/tickets'
+    | '/api/public/cron/movidesk-sync'
+    | '/api/public/webhooks/movidesk'
   id:
     | '__root__'
     | '/'
@@ -153,12 +177,16 @@ export interface FileRouteTypes {
     | '/_authenticated/processes'
     | '/_authenticated/technologies'
     | '/_authenticated/tickets'
+    | '/api/public/cron/movidesk-sync'
+    | '/api/public/webhooks/movidesk'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
+  ApiPublicCronMovideskSyncRoute: typeof ApiPublicCronMovideskSyncRoute
+  ApiPublicWebhooksMovideskRoute: typeof ApiPublicWebhooksMovideskRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -240,6 +268,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedTicketsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/api/public/cron/movidesk-sync': {
+      id: '/api/public/cron/movidesk-sync'
+      path: '/api/public/cron/movidesk-sync'
+      fullPath: '/api/public/cron/movidesk-sync'
+      preLoaderRoute: typeof ApiPublicCronMovideskSyncRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/webhooks/movidesk': {
+      id: '/api/public/webhooks/movidesk'
+      path: '/api/public/webhooks/movidesk'
+      fullPath: '/api/public/webhooks/movidesk'
+      preLoaderRoute: typeof ApiPublicWebhooksMovideskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -272,6 +314,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
+  ApiPublicCronMovideskSyncRoute: ApiPublicCronMovideskSyncRoute,
+  ApiPublicWebhooksMovideskRoute: ApiPublicWebhooksMovideskRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
