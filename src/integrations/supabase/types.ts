@@ -327,6 +327,7 @@ export type Database = {
           area: string
           company_id: string
           created_at: string
+          email: string | null
           id: string
           job_title: string
           name: string
@@ -338,6 +339,7 @@ export type Database = {
           area: string
           company_id: string
           created_at?: string
+          email?: string | null
           id?: string
           job_title: string
           name: string
@@ -349,6 +351,7 @@ export type Database = {
           area?: string
           company_id?: string
           created_at?: string
+          email?: string | null
           id?: string
           job_title?: string
           name?: string
@@ -360,6 +363,100 @@ export type Database = {
             foreignKeyName: "employees_company_id_fkey"
             columns: ["company_id"]
             isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      integration_runs: {
+        Row: {
+          company_id: string
+          created: number
+          created_at: string
+          entity: string
+          id: string
+          kind: string
+          message: string | null
+          received: number
+          skipped: number
+          status: string
+        }
+        Insert: {
+          company_id: string
+          created?: number
+          created_at?: string
+          entity?: string
+          id?: string
+          kind: string
+          message?: string | null
+          received?: number
+          skipped?: number
+          status: string
+        }
+        Update: {
+          company_id?: string
+          created?: number
+          created_at?: string
+          entity?: string
+          id?: string
+          kind?: string
+          message?: string | null
+          received?: number
+          skipped?: number
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "integration_runs_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      integrations: {
+        Row: {
+          api_token: string | null
+          company_id: string
+          created_at: string
+          id: string
+          last_sync_at: string | null
+          last_sync_status: string | null
+          provider: string
+          sync_enabled: boolean
+          updated_at: string
+          webhook_key: string
+        }
+        Insert: {
+          api_token?: string | null
+          company_id: string
+          created_at?: string
+          id?: string
+          last_sync_at?: string | null
+          last_sync_status?: string | null
+          provider?: string
+          sync_enabled?: boolean
+          updated_at?: string
+          webhook_key?: string
+        }
+        Update: {
+          api_token?: string | null
+          company_id?: string
+          created_at?: string
+          id?: string
+          last_sync_at?: string | null
+          last_sync_status?: string | null
+          provider?: string
+          sync_enabled?: boolean
+          updated_at?: string
+          webhook_key?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "integrations_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
             referencedRelation: "companies"
             referencedColumns: ["id"]
           },
@@ -784,21 +881,33 @@ export type Database = {
           content: string
           created_at: string
           employee_id: string | null
+          external_id: string | null
+          external_status: string | null
           id: string
+          resolved_at: string | null
+          source: string
         }
         Insert: {
           company_id: string
           content: string
           created_at?: string
           employee_id?: string | null
+          external_id?: string | null
+          external_status?: string | null
           id?: string
+          resolved_at?: string | null
+          source?: string
         }
         Update: {
           company_id?: string
           content?: string
           created_at?: string
           employee_id?: string | null
+          external_id?: string | null
+          external_status?: string | null
           id?: string
+          resolved_at?: string | null
+          source?: string
         }
         Relationships: [
           {
