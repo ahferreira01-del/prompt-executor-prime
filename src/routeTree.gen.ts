@@ -17,6 +17,7 @@ import { Route as AuthenticatedCompaniesRouteImport } from './routes/_authentica
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated.dashboard'
 import { Route as AuthenticatedDiagnosticRouteImport } from './routes/_authenticated.diagnostic'
 import { Route as AuthenticatedEmployeesRouteImport } from './routes/_authenticated.employees'
+import { Route as AuthenticatedIntegrationsRouteImport } from './routes/_authenticated.integrations'
 import { Route as AuthenticatedProcessesRouteImport } from './routes/_authenticated.processes'
 import { Route as AuthenticatedTechnologiesRouteImport } from './routes/_authenticated.technologies'
 import { Route as AuthenticatedTicketsRouteImport } from './routes/_authenticated.tickets'
@@ -62,6 +63,12 @@ const AuthenticatedEmployeesRoute = AuthenticatedEmployeesRouteImport.update({
   path: '/employees',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedIntegrationsRoute =
+  AuthenticatedIntegrationsRouteImport.update({
+    id: '/integrations',
+    path: '/integrations',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedProcessesRoute = AuthenticatedProcessesRouteImport.update({
   id: '/processes',
   path: '/processes',
@@ -99,6 +106,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/diagnostic': typeof AuthenticatedDiagnosticRoute
   '/employees': typeof AuthenticatedEmployeesRoute
+  '/integrations': typeof AuthenticatedIntegrationsRoute
   '/processes': typeof AuthenticatedProcessesRoute
   '/technologies': typeof AuthenticatedTechnologiesRoute
   '/tickets': typeof AuthenticatedTicketsRoute
@@ -113,6 +121,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/diagnostic': typeof AuthenticatedDiagnosticRoute
   '/employees': typeof AuthenticatedEmployeesRoute
+  '/integrations': typeof AuthenticatedIntegrationsRoute
   '/processes': typeof AuthenticatedProcessesRoute
   '/technologies': typeof AuthenticatedTechnologiesRoute
   '/tickets': typeof AuthenticatedTicketsRoute
@@ -129,6 +138,7 @@ export interface FileRoutesById {
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/diagnostic': typeof AuthenticatedDiagnosticRoute
   '/_authenticated/employees': typeof AuthenticatedEmployeesRoute
+  '/_authenticated/integrations': typeof AuthenticatedIntegrationsRoute
   '/_authenticated/processes': typeof AuthenticatedProcessesRoute
   '/_authenticated/technologies': typeof AuthenticatedTechnologiesRoute
   '/_authenticated/tickets': typeof AuthenticatedTicketsRoute
@@ -145,6 +155,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/diagnostic'
     | '/employees'
+    | '/integrations'
     | '/processes'
     | '/technologies'
     | '/tickets'
@@ -159,6 +170,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/diagnostic'
     | '/employees'
+    | '/integrations'
     | '/processes'
     | '/technologies'
     | '/tickets'
@@ -174,6 +186,7 @@ export interface FileRouteTypes {
     | '/_authenticated/dashboard'
     | '/_authenticated/diagnostic'
     | '/_authenticated/employees'
+    | '/_authenticated/integrations'
     | '/_authenticated/processes'
     | '/_authenticated/technologies'
     | '/_authenticated/tickets'
@@ -247,6 +260,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedEmployeesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/integrations': {
+      id: '/_authenticated/integrations'
+      path: '/integrations'
+      fullPath: '/integrations'
+      preLoaderRoute: typeof AuthenticatedIntegrationsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/processes': {
       id: '/_authenticated/processes'
       path: '/processes'
@@ -291,6 +311,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedDiagnosticRoute: typeof AuthenticatedDiagnosticRoute
   AuthenticatedEmployeesRoute: typeof AuthenticatedEmployeesRoute
+  AuthenticatedIntegrationsRoute: typeof AuthenticatedIntegrationsRoute
   AuthenticatedProcessesRoute: typeof AuthenticatedProcessesRoute
   AuthenticatedTechnologiesRoute: typeof AuthenticatedTechnologiesRoute
   AuthenticatedTicketsRoute: typeof AuthenticatedTicketsRoute
@@ -302,6 +323,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedDiagnosticRoute: AuthenticatedDiagnosticRoute,
   AuthenticatedEmployeesRoute: AuthenticatedEmployeesRoute,
+  AuthenticatedIntegrationsRoute: AuthenticatedIntegrationsRoute,
   AuthenticatedProcessesRoute: AuthenticatedProcessesRoute,
   AuthenticatedTechnologiesRoute: AuthenticatedTechnologiesRoute,
   AuthenticatedTicketsRoute: AuthenticatedTicketsRoute,
